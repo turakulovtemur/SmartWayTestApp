@@ -20,7 +20,7 @@ namespace SmartWayTestAppplication.Controllers
             _downLoadLinkService = downLoadLinkService;
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Получить файл по Id")]
         [HttpGet("{Id}")]
         public async Task<ActionResult<FileDto>> GetById(Guid Id, CancellationToken token)
@@ -36,7 +36,7 @@ namespace SmartWayTestAppplication.Controllers
             }
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Создать файл")]
         [HttpPost]
         public async Task<ActionResult<FileDto>> CreateFile([FromBody] CreateFileRequestModel model, CancellationToken token)
@@ -52,7 +52,7 @@ namespace SmartWayTestAppplication.Controllers
             return Ok(result);
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Обновить файл")]
         [HttpPut]
         public async Task<ActionResult<FileDto>> EditFile(Guid Id, [FromBody] EditFileRequestModel model, CancellationToken token)
@@ -80,7 +80,7 @@ namespace SmartWayTestAppplication.Controllers
             }
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Получить все файлы")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FileDto>>> GetAll(CancellationToken token)
@@ -89,7 +89,7 @@ namespace SmartWayTestAppplication.Controllers
             return Ok(result);
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Удалить файл")]
         [HttpDelete]
         public async Task<ActionResult> DeleteFile(Guid Id, CancellationToken token)
@@ -98,7 +98,7 @@ namespace SmartWayTestAppplication.Controllers
             return Ok();
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Скачать файл по Id")]
         [HttpGet("download/{Id}")]
         public FileContentResult DownloadFileArchive(Guid Id, CancellationToken token)
@@ -128,7 +128,7 @@ namespace SmartWayTestAppplication.Controllers
             return File(fileBytes, "application/zip", archiveName);
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Скачать группу файлов по Id")]
         [HttpPost("download")]
         public FileContentResult DownloadFileArchive(Guid[] Ids, CancellationToken token)
@@ -156,7 +156,7 @@ namespace SmartWayTestAppplication.Controllers
             return File(fileBytes, "application/zip", archiveName);
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Скачать файлы по ссылке")]
         [HttpGet("link/{id}")]
         public async Task<IActionResult> DownloadByLink(string id, CancellationToken cancellationToken)
@@ -170,7 +170,7 @@ namespace SmartWayTestAppplication.Controllers
             return File(bytes, "application/zip", archiveName);
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Сформировать ссылку для скачивания файлов")]
         [HttpGet("link")]
         public async Task<ActionResult> CreateDownloadLink([FromQuery]Guid[] fileIds,[FromQuery] long userId, CancellationToken token)
