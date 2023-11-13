@@ -20,7 +20,7 @@ namespace SmartWayTestAppplication.Controllers
             _userService = userService;
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Получить пользователя по Id")]
         [HttpGet("{Id}")]
         public async Task<ActionResult<UserDto>> GetById(long Id, CancellationToken token)
@@ -36,7 +36,7 @@ namespace SmartWayTestAppplication.Controllers
             }
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Создать пользователя")]
         [HttpPost]
         public async Task<ActionResult<UserDto>> CreateUser([FromBody] RequestModel model, CancellationToken token)
@@ -50,7 +50,7 @@ namespace SmartWayTestAppplication.Controllers
             return Ok(user);
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Обновить пользователя")]
         [HttpPut("{id}")]
         public async Task<ActionResult<UserDto>> EditUser([FromRoute]long Id, [FromBody] EditRequestModel model, CancellationToken token)
@@ -86,7 +86,7 @@ namespace SmartWayTestAppplication.Controllers
             return Ok(result);
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Удалить пользователя")]
         [HttpDelete]
         public async Task<ActionResult> DeleteUser(long Id, CancellationToken token)
@@ -95,7 +95,7 @@ namespace SmartWayTestAppplication.Controllers
             return Ok();
         }
 
-        [Authorize]
+        
         [SwaggerOperation("Получить все файлы у пользователя")]
         [HttpGet("{Id}/files")]
         public async Task<ActionResult<IEnumerable<FileDto>>> GetUserAllFiles(long Id, CancellationToken token)
